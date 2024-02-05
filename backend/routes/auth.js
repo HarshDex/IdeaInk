@@ -1,16 +1,18 @@
-import express from "express";
-import { login, logout, signup } from "../controllers/authController";
-const cors = require('cors')
+const express = require('express');
+const { login, logout, signup, test} = require("../controllers/authController");
+const cors = require('cors');
 
 const router = express.Router();
 
-//middleware
+//middlewar e
 router.use(
     cors({
         credentials: true,
         origin: 'http://localhost:5173'
     })
-)
+) 
+
+router.get('/',test)
 
 router.post("/signup", signup);
 
@@ -18,4 +20,4 @@ router.post("/login", login);
 
 router.post("/logout", logout);
 
-export default router;
+module.exports =  router;
